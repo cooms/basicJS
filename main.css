@@ -1,11 +1,12 @@
 body {
-  font-family: helvetica;
   text-align: left;
+  background-color: #eee;
 }
 
 .mainWrapper {
   width: 100%;
   margin: 0px auto;
+  font-family: 'Alegreya Sans', sans-serif;
 }
 
 .header {
@@ -16,13 +17,15 @@ body {
   margin: -7px auto 60px auto;
   padding: 20px 0px 20px 0px;
   font-weight: 200;
+  background-color: #fff;
   box-shadow: 0px 1px 5px #bbb;
 }
 
 .personWrapper {
+  font-family: 'Alegreya Sans', sans-serif;
   width: 50%;
   margin: 40px auto 40px auto;
-  background-color: #eee;
+  background-color: #fff;
   box-shadow: 1px 1px 5px #bbb;
   padding: 10px;
   border-radius: 2px;
@@ -64,21 +67,23 @@ body {
   margin: 20px 0px 20px 0px;
   letter-spacing: .3px;
   line-height: 22px;
-  font-size: 1em;
+  font-size: 1.1em;
   color: #777;
 }
 
-.personLink {
+.personContact {
   display: inline-block;
   text-decoration: none;
   color: #777;
   padding: 5px 10px 5px 10px;
   border: 1px solid #777;
   border-radius: 2px;
-  margin-bottom: 2px;
+  margin: 0px 10px 2px 0px;
+  transition: .3s;
 }
 
-.personLink:hover {
+.personContact:hover {
   color: #eee;
   background-color: #777;
+  transition: .3s;
 }
