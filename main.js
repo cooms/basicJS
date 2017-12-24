@@ -78,4 +78,13 @@ for (i = 0; i < people.length; i++) {
 }
 
 
-// CRUD --------------------------------------------------------------------- //
+// AJAX CRUD --------------------------------------------------------------------- //
+
+// fetch JSON
+const request = new XMLHttpRequest();
+request.open('GET', 'https://learnwebcode.github.io/json-example/animals-3.json');
+request.onload = function() {
+  const data = JSON.parse(request.responseText);
+  console.log(data[0])
+};
+request.send();
