@@ -34,33 +34,6 @@ const people = [
     Bio: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
     Contact: "http://www.google.com",
     PageLink: "",
-  },
-  {
-    Name: "Bella",
-    Image: "https://i.pinimg.com/736x/4a/90/fb/4a90fbf7a4b82d2d2ea7c434109d3eb0.jpg",
-    Occupation: "Dog",
-    Age: "2",
-    Bio: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
-    Contact: "www.google.com",
-    PageLink: "",
-  },
-  {
-    Name: "Bella",
-    Image: "https://i.pinimg.com/736x/4a/90/fb/4a90fbf7a4b82d2d2ea7c434109d3eb0.jpg",
-    Occupation: "Dog",
-    Age: "2",
-    Bio: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
-    Contact: "www.google.com",
-    PageLink: "",
-  },
-  {
-    Name: "Bella",
-    Image: "https://i.pinimg.com/736x/4a/90/fb/4a90fbf7a4b82d2d2ea7c434109d3eb0.jpg",
-    Occupation: "Dog",
-    Age: "2",
-    Bio: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
-    Contact: "www.google.com",
-    PageLink: "",
   }
 ]
 
@@ -69,19 +42,20 @@ const people = [
 // Appending data to HTML --------------------------------------------------- //
 
 for (i = 0; i < people.length; i++) {
-  document.write("<article class='personWrapper'><img class='bioPic' src='" + people[i]["Image"] + "'/>")
-  document.write("<h2 class='personName'>" + people[i]["Name"] + ", " + people[i]["Age"] + "</h2>")
-  document.write("<h2 class='personTitle'>" + people[i]["Occupation"] + "</h2><hr/>")
-  document.write("<p class='personBio'>" + people[i]["Bio"] + "</p>")
-  document.write("<a class='personContact' href='" + people[i]["Contact"] + "'>Contact</a>")
-  document.write("<a class='personContact' href='" + people[i]["PageLink"] + "'>More Info</a></article>")
+  document.getElementById("append").innerHTML +=
+      "<article class='personWrapper'><img class='bioPic' src='" + people[i]["Image"] + "'/>"
+    + "<h2 class='personName'>" + people[i]["Name"] + ", " + people[i]["Age"] + "</h2>"
+    + "<h2 class='personTitle'>" + people[i]["Occupation"] + "</h2><hr/>"
+    + "<p class='personBio'>" + people[i]["Bio"] + "</p>"
+    + "<a class='personContact' href='" + people[i]["Contact"] + "'>Contact</a>"
+    + "<a class='personContact' href='" + people[i]["PageLink"] + "'>More Info</a></article>"
 }
 
 // AJAX CRUD --------------------------------------------------------------------- //
 // Fetch
 
 let pageCounter = 1
-const append = document.getElementById("append")
+
 const fetchBtn = document.getElementById("fetchBtn")
 
 // Fetch data from object(s)
@@ -108,13 +82,13 @@ function renderHTML(data) {
   let string = ""
   for (i = 0; i < data.length; i++) {
     // Name
-    string += "<h1>" + data[i].name + "</h1><br/>"
+    string += "<article class='personWrapper'><h2 class='personName'>" + data[i].name + "</h2><hr/>"
     // Species
-    string += "<h2>" + data[i].species + "</h2><br/>"
+    string += "<h2 class='personTitle'>" + data[i].species + "</h2><br/>"
     // Foods
     // Likes
-    string += "<h3> Food: </h3><br/><h4> Likes:" + data[i].foods.likes + "</h4><br/>"
-    string += "<h4> Dislikes:" + data[i].foods.dislikes + "</h4>"
+    string += "<h2 class='personTitle'> Food: <br/> Likes: " + data[i].foods.likes + "</h2><br/>"
+    string += "<h2 class='personTitle'> Dislikes: " + data[i].foods.dislikes + "</h2></article>"
   }
   append.insertAdjacentHTML("beforeend", string)
 }
