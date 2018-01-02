@@ -10,7 +10,7 @@ const people = [
   },
   {
     Name: "Mario",
-    Image: "https://cdn.churchm.ag/wp-content/uploads/2012/08/Mario-in-Real-Life-620x688.jpeg",
+    Image: "https://lh3.googleusercontent.com/6geoqgXLoeCK4-A1xxkR9KcGcI_KF23SGeHX1sAM2gauaIhNp515feFNS3ML1zmCugI=w300",
     Occupation: "Plumber",
     Age: "22",
     Bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
@@ -27,12 +27,12 @@ const people = [
     PageLink: "",
   },
   {
-    Name: "Bella",
-    Image: "https://i.pinimg.com/736x/4a/90/fb/4a90fbf7a4b82d2d2ea7c434109d3eb0.jpg",
+    Name: "Taffy",
+    Image: "https://www.wherepetsarefound.com/wp-content/uploads/2014/12/856834-500x500.jpg",
     Occupation: "Dog",
     Age: "2",
     Bio: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
-    Contact: "www.google.com",
+    Contact: "http://www.google.com",
     PageLink: "",
   },
   {
@@ -64,6 +64,8 @@ const people = [
   }
 ]
 
+// Another JSON for later use: https://jsonplaceholder.typicode.com/posts //
+
 // Appending data to HTML --------------------------------------------------- //
 
 for (i = 0; i < people.length; i++) {
@@ -76,14 +78,16 @@ for (i = 0; i < people.length; i++) {
 }
 
 // AJAX CRUD --------------------------------------------------------------------- //
-// fetch JSON
+// Fetch
 
 let pageCounter = 1
 const append = document.getElementById("append")
 const fetchBtn = document.getElementById("fetchBtn")
 
+// Fetch data from object(s)
 fetchBtn.addEventListener("click", function(){
   const request = new XMLHttpRequest()
+  // Change object to fetch from each time button is clicked
   request.open("GET", "https://learnwebcode.github.io/json-example/animals-" + pageCounter + ".json")
   if (pageCounter <= 3) {
     pageCounter += 1
@@ -93,15 +97,24 @@ fetchBtn.addEventListener("click", function(){
   }
   request.onload = function() {
     const data = JSON.parse(request.responseText)
+    console.log(data)
     renderHTML(data)
   }
   request.send()
 })
 
+// Display data
 function renderHTML(data) {
   let string = ""
   for (i = 0; i < data.length; i++) {
-    string += "<p>" + data[i].name + "</p>"
+    // Name
+    string += "<h1>" + data[i].name + "</h1><br/>"
+    // Species
+    string += "<h2>" + data[i].species + "</h2><br/>"
+    // Foods
+    // Likes
+    string += "<h3> Food: </h3><br/><h4> Likes:" + data[i].foods.likes + "</h4><br/>"
+    string += "<h4> Dislikes:" + data[i].foods.dislikes + "</h4>"
   }
   append.insertAdjacentHTML("beforeend", string)
 }
