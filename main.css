@@ -31,12 +31,19 @@ body {
 /* Parallax Section --------------------------------------------------------- */
 
 .parallax {
-  background: url("http://eskipaper.com/images/background-wallpaper-16.jpg") repeat fixed 100%;
   height: 500px;
+  z-index: 1;
+}
+
+.parallax-window {
+  min-height: 400px;
+  background: transparent;
 }
 
 #parallax-inner {
   padding-top: 100px;
+  z-index: 2;
+  position: relative;
 }
 
 #parallax-header {
@@ -62,7 +69,7 @@ body {
   background-color: #eee;
   border: 1px solid #777;
   padding: 10px 20px 10px 20px;
-  margin: 0px auto;
+  margin: 0px auto 20px auto;
   border-radius: 2px;
   display: block;
 }
